@@ -17,7 +17,6 @@ limitations under the License.
 package masker
 
 import (
-	"fmt"
 	"github.com/normal-coder/go-masker/util/regRule"
 	"reflect"
 	"regexp"
@@ -59,7 +58,6 @@ func MaskString(input string, start int) string {
 	case lenStart <= 3:
 		return input[:start] + strings.Repeat("*", lenStart)
 	case 3 < lenStart && lenStart <= 5:
-		fmt.Println(input)
 		return input[:start+1] + strings.Repeat("*", lenStart-2) + input[lenStart+start-1:]
 	case 5 < lenStart && lenStart <= 10:
 		return input[:start+2] + strings.Repeat("*", lenStart-4) + input[lenStart+start-2:]
