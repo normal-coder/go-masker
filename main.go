@@ -16,5 +16,8 @@ limitations under the License.
 
 package main
 
+//import "github.com/normal-coder/go-masker/cmd"
+
 func main() {
+	//cmd.Execute()
 }

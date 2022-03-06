@@ -17,7 +17,7 @@ limitations under the License.
 package masker
 
 import (
-	"github.com/normal-coder/go-masker/util/regRule"
+	"normalcoder.com/go-masker/util/regRule"
 	"reflect"
 	"regexp"
 	"strings"
