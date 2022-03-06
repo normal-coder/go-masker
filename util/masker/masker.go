@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 package masker
 
 import (
@@ -25,10 +26,10 @@ import (
 
 var funcs = map[string]interface{}{
 	"FindEmail": FindEmail,
-	"FindIP":    FindIP,
+	"FindIPv4":  FindIPv4,
 	"FindPhone": FindPhone,
 	"MaskEmail": MaskEmail,
-	"MaskIP":    MaskIP,
+	"MaskIPv4":  MaskIPv4,
 	"MaskPhone": MaskPhone,
 }
 
@@ -95,12 +96,12 @@ func MaskPhone(input string) string {
 
 }
 
-func FindIP(input string) [][]string {
+func FindIPv4(input string) [][]string {
 	return regexp.MustCompile(regRule.IPv4).FindAllStringSubmatch(input, maxMatchCount)
 }
 
-func MaskIP(input string) string {
-	targets := FindIP(input)
+func MaskIPv4(input string) string {
+	targets := FindIPv4(input)
 	for _, target := range targets {
 		maskedTarget := target[1] + "." + MaskString(target[2], 0) + "." + MaskString(target[3], 0) + "." + target[4]
 		input = strings.Replace(input, target[0], maskedTarget, -1)
