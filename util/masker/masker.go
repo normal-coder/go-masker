@@ -119,3 +119,17 @@ func MaskEmail(input string) string {
 	}
 	return input
 }
+
+func FindVerificationCode(input string, length int) [][]string {
+	rule := "\\d{" + string(length) + "}"
+	return regexp.MustCompile(rule).FindAllStringSubmatch(input, maxMatchCount)
+}
+
+func MaskVerificationCode(input string, length int) string {
+	targets := FindVerificationCode(input, length)
+	for _, target := range targets {
+		maskedTarget := strings.Repeat("*", length)
+		input = strings.Replace(input, target[0], maskedTarget, -1)
+	}
+	return input
+}
